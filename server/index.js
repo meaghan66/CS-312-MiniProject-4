@@ -34,11 +34,7 @@ const mockPost = {
 let existingPosts = [];
 existingPosts.push(mockPost);
 
-
-const users = [
-    { name: 'Meaghan', password: '1234' },
-    { name: 'user123', password: 'randompassword' },
-];
+let users = [];
 
 // show the main page with existing posts as JSON
 app.get('/api', (req, res) => {
@@ -62,19 +58,18 @@ app.post('/api/signup', (req, res) => {
 
 // handling the sign in page
 app.post('/api/signin', (req, res) => {
-    const { username, password } = req.body;
-    
-    // find the given user in the list of users
-    const user = users.find(user => user.username === username);
-    
-    // if the username and password are not in the list, invalid
+    const { name, password } = req.body;
+
+    // fetch the user from the username
+    const user = users.find(user => user.name === name);
+
+    // check if there is a matching username and password
     if (!user || user.password !== password) {
-      return res.json({ message: 'Invalid credentials' });
+        return res.status(400).json({ message: 'Invalid credentials' });
     }
-  
-    // successful signin, send as json
+
     res.json({ message: 'Account verified! Welcome!' });
-  });
+});
 
 // create a new post
 app.post('/api/createPost', (req, res) => {
@@ -145,6 +140,7 @@ app.post('/deletePost', (req, res) => {
         res.status(404).json({ error: 'Post not found' });
     }
 });
+
 
 // basic run server
 app.listen(PORT, () => {

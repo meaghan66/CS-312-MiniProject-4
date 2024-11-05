@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Blog.css';
 
 // handle creating the blog post
-const BlogPostForm = ({ setPosts, currentUser }) => {
+const BlogForm = ({ setPosts, currentUser }) => {
   const [postTitle, setPostTitle] = useState('');
   const [postContent, setPostContent] = useState('');
 
@@ -34,4 +34,4 @@ const BlogPostForm = ({ setPosts, currentUser }) => {
   );
 };
 
-export default BlogPostForm;
+export default BlogForm;

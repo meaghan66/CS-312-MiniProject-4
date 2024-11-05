@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Blog.css';
 
 const SignIn = () => {
-  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
@@ -16,12 +16,12 @@ const SignIn = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ name, password }),
     })
     // handle errors with signin in
       .then(response => {
         if (!response.ok) {
-          throw new Error('Invalid credentials');
+          throw new Error('Invalid username and password');
         }
         return response.json();
       })
@@ -41,9 +41,9 @@ const SignIn = () => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-          placeholder="Enter your username"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          placeholder="Enter your name"
           required
         />
         <input

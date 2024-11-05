@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './Blog.css';
 
 // handle editing an existing post
-const EditPostForm = () => {
+const Edit = () => {
   const { postId } = useParams();
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
@@ -63,4 +63,4 @@ const EditPostForm = () => {
   );
 };
 
-export default EditPostForm;
+export default Edit;

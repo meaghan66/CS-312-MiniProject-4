@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BlogPostForm from './BlogPostForm';
+import BlogForm from './BlogForm';
 import { useNavigate } from 'react-router-dom';
 import './Blog.css';
 
@@ -48,7 +48,7 @@ const BlogList = () => {
     <div>
       {/* show main page */}
       <h1>BlogChamp 2.0</h1>
-      <BlogPostForm setPosts={setPosts} currentUser={currentUser} />
+      <BlogForm setPosts={setPosts} currentUser={currentUser} />
 
       <hr />
       {posts.length > 0 ? (
